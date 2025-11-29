@@ -33,18 +33,20 @@
         #image("images/logo-uit.svg", width: 200pt)
       ]
       #align(horizon + center)[
-        #text(size: 26pt)[*Đồ án 1*] \
+        #text(size: 23pt)[*Phát triển ứng dụng trên nền tảng dữ liệu lớn*] \
         #v(3pt)
-        #text(size: 30pt)[*Tìm hiểu về .NET Core 8*] \
+        #text(size: 28pt)[*Fake News Detection*] \
         #v(20pt)
 
         #text[Giảng viên hướng dẫn] \
-        #text[*Ths. Nguyễn Công Hoan*] \
+        #text[*TS. Đỗ Trọng Hợp*] \
+        #text[*Nguyễn Ngọc Quí*] \
 
         #v(10pt)
 
         #text[Sinh viên thực hiện] \
-        #text[*Phạm Nhật Huy #sym.dash.en 23520643*] \
+        #text[*Hồ Nguyễn Tài Lợi #sym.dash.en 23520869*] \
+        #text[*Nguyễn Trung Kiên #sym.dash.en 23520802*] \
       ]
       #align(bottom + center)[
         #text(size: 13pt)[
@@ -90,14 +92,3 @@
 #include "problem-statement.typ"
 #pagebreak()
 
-#include "introduction.typ"
-#include "load-balancer.typ"
-#include "load-balancer.typ"
-#include "caching.typ"
-#include "microservices.typ"
-#include "service-discovery.typ"
-#include "distributed-transaction.typ"
-#include "consensus.typ"
-#include "deployment.typ"
-#include "dotnet.typ"
-#include "best-practices.typ"

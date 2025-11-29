@@ -1,5 +1,0 @@
-{
-    "cSpell.language": "en,vi",
-    "pasteImage.insertPattern": "#image(\"${imageSyntaxPrefix}${imageFilePath}${imageSyntaxSuffix}\")"
-
-}
