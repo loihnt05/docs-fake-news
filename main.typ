@@ -89,6 +89,11 @@
   [Chương #counter(heading).at(here()).at(0). ] + it.body
 }
 
-#include "problem-statement.typ"
+#include "abstract.typ"
 #pagebreak()
 
+#include "introduction.typ"
+#pagebreak()
+
+#include "related-work.typ"
+#pagebreak()

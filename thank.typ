@@ -5,9 +5,9 @@ block[
   LỜI CẢM ƠN
 ]))
 
-Em xin gửi lời cảm ơn chân thành và sâu sắc nhất đến thầy Nguyễn Công Hoan –
+Em xin gửi lời cảm ơn chân thành và sâu sắc nhất đến TS. Đỗ Trọng Hợp và thầy Nguyễn Ngọc Quí –
 người đã tận tình hướng dẫn, chỉ bảo và đồng hành cùng em trong suốt quá trình
-thực hiện môn học Đồ án 1.
+thực hiện môn học Phát triển ứng dụng trên nền tảng dữ liệu lớn.
 
 Sự hỗ trợ nhiệt tình, những lời khuyên quý báu và kinh nghiệm chuyên môn của thầy
 đã giúp em không chỉ hoàn thành đồ án một cách tốt nhất mà còn tích lũy thêm
