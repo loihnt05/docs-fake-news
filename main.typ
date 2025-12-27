@@ -107,14 +107,14 @@
 #include "de-lm.typ"
 #pagebreak()
 
-// #include "human-feedback.typ"
-// #pagebreak()
+#include "human-feedback.typ"
+#pagebreak()
 
-// #include "continuous-learning.typ"
-// #pagebreak()
+#include "continuous-learning.typ"
+#pagebreak()
 
-// #include "evaluation.typ"
-// #pagebreak()
+#include "evaluation.typ"
+#pagebreak()
 
 // #include "case-study.typ"
 // #pagebreak()
@@ -125,4 +125,4 @@
 // #include "future-work.typ"
 // #pagebreak()
 
-// #include "abstract.typ"
+// #include "conclusion.typ"
