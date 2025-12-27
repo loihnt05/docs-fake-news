@@ -1,4 +1,5 @@
-  Chương 8: Thiết lập Thử nghiệm và Đánh giá (Experimental Setup & Evaluation)
+#set par(justify: true)
+ Chương 8: Thiết lập Thử nghiệm và Đánh giá (Experimental Setup & Evaluation)
 
   Một hệ thống phức tạp không thể chứng minh được giá trị của nó nếu không có một quy trình đánh giá và đo lường chặt chẽ. Chương này trình bày về các bộ dữ liệu được sử dụng, các chỉ số đo lường hiệu suất, và các phân tích chuyên sâu để
   kiểm chứng giả thuyết cốt lõi: hệ thống có khả năng học liên tục và chống lại hiện tượng trôi dạt khái niệm.

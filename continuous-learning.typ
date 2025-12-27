@@ -1,4 +1,6 @@
 
+#set par(justify: true)
+
   Chương 7: Pipeline Học Liên tục (Continuous Learning Pipeline - CORE)
 
   Đây là chương lõi, mô tả quy trình trung tâm giúp hệ thống khác biệt: khả năng tự tiến hóa và thích ứng với môi trường thông tin luôn biến động. Pipeline này tích hợp các kết quả từ hệ thống Phản hồi & Độ uy tín (Chương 6) để tạo ra các

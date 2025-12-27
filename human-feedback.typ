@@ -1,3 +1,4 @@
+#set par(justify: true)
   Chương 6: Hệ thống Phản hồi và Độ uy tín (Human Feedback & Reputation System)
 
   Để giải quyết các thách thức về Concept Drift và Adversarial Users, một hệ thống chỉ học từ dữ liệu mới là không đủ. Nó phải có khả năng học hỏi từ chính những người dùng của mình một cách thông minh và an toàn. Chương này mô tả kiến

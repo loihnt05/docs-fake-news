@@ -104,8 +104,8 @@
 #include "system-architecture.typ"
 #pagebreak()
 
-// #include "de-lm.typ"
-// #pagebreak()
+#include "de-lm.typ"
+#pagebreak()
 
 // #include "human-feedback.typ"
 // #pagebreak()
