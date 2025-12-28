@@ -116,13 +116,10 @@
 #include "evaluation.typ"
 #pagebreak()
 
-// #include "case-study.typ"
-// #pagebreak()
-
 #include "limitations-risks.typ"
 #pagebreak()
 
 #include "future-work.typ"
 #pagebreak()
 
-// #include "conclusion.typ"
+#include "conclusion.typ"

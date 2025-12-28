@@ -7,7 +7,6 @@ block[
 #set par(justify: true)
 
   #strong[Bài toán]
-
   Trong kỷ nguyên số, sự bùng nổ của mạng xã hội và các phương tiện truyền thông trực tuyến đã tạo ra một môi trường lan truyền thông tin với tốc độ chóng mặt. Tuy nhiên, mặt trái của nó là sự gia tăng của thông tin sai lệch
   (misinformation) và tin giả (fake news), gây ra những hệ lụy nghiêm trọng cho xã hội, từ chính trị, kinh tế đến sức khỏe cộng đồng. Đối với người dùng cuối, việc xác minh tính xác thực của một thông tin đòi hỏi nhiều thời gian và kỹ
   năng, trong khi các công cụ hiện có thường tập trung vào ngôn ngữ tiếng Anh và không đủ nhanh nhạy để đối phó với bối cảnh tin tức thay đổi liên tục tại Việt Nam.
