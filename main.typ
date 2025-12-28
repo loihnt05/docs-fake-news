@@ -123,3 +123,17 @@
 #pagebreak()
 
 #include "conclusion.typ"
+#pagebreak()
+
+#let glossary = (
+  RAG: "Retrieval-Augmented Generation",
+  LLM: "Large Language Model",
+  NLP: "Natural Language Processing",
+)
+
+#let term = (key) => glossary[key]
+
+
+#pagebreak()
+
+#include "ref.typ"

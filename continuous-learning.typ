@@ -31,9 +31,11 @@ Phương pháp này mang lại ba lợi ích quan trọng. Thứ nhất là sự
 Thứ hai là hiệu quả về tài nguyên. Thay vì chạy một nghìn lần huấn luyện nhỏ lẻ, hệ thống chạy một lần huấn luyện lớn với toàn bộ dữ liệu tích lũy. Điều này không chỉ tiết kiệm chi phí tính toán mà còn cho phép mô hình học được những mẫu phức tạp hơn từ tập dữ liệu lớn hơn. Có một hiệu ứng tương tự như việc bạn học một ngôn ngữ mới: thay vì học một từ rồi quên, học một từ khác rồi quên, bạn học cả một bài văn đầy đủ để hiểu được ngữ cảnh và cấu trúc.
 
 Thứ ba là tính nhất quán trong triển khai. Sau khi quá trình huấn luyện hoàn thành, tất cả các máy chủ sản xuất được cập nhật đồng thời lên cùng một phiên bản mô hình mới. Không có sự phân mảnh, không có các phiên bản "lẻ loi". Mọi người dùng, bất kể họ kết nối đến máy chủ nào, đều trải nghiệm cùng một mức độ trí tuệ của hệ thống.
+
 #align(center)[
   #image("images/model-retrain.jpg", width: 400pt)
 ]
+
 == Lựa Chọn Dữ Liệu Huấn Luyện - Nghệ Thuật Lọc Chân Lý
 
 Có một nguyên tắc cơ bản trong machine learning mà mọi kỹ sư đều biết: "Garbage in, garbage out" - rác vào, rác ra. Chất lượng của mô hình mới phụ thuộc tuyệt đối vào chất lượng của dữ liệu được sử dụng để huấn luyện nó. Đây là lý do tại sao bước lựa chọn dữ liệu trong `retrain_pipeline.py` được thực hiện với sự cẩn trọng đến từng chi tiết nhỏ.
