@@ -3,7 +3,9 @@
 = Pipeline Học Liên tục - Trái Tim Trí Tuệ Nhân Tạo Tự Tiến Hóa
 
 Hãy tưởng tượng bạn đang xây dựng một hệ thống phát hiện tin giả không chỉ hoạt động tốt hôm nay, mà còn ngày càng thông minh hơn theo thời gian. Đây chính là bản chất của Pipeline Học Liên tục - một cơ chế cho phép hệ thống tự học hỏi từ kinh nghiệm và thích ứng với môi trường thông tin luôn thay đổi. Chương này là trái tim của toàn bộ kiến trúc, nơi mà khoa học dữ liệu gặp gỡ kỹ thuật vận hành để tạo nên một hệ thống thực sự "sống".
-
+#align(center)[
+  #image("images/online-learning.png", width: 400pt)
+]
 == Thời Điểm Học - Nghệ Thuật Cân Bằng Giữa Tốc Độ và Ổn Định
 
 Khi thiết kế một hệ thống học máy trong môi trường sản xuất thực tế, câu hỏi đầu tiên và quan trọng nhất là: mô hình nên học khi nào? Quyết định này không đơn thuần là một lựa chọn kỹ thuật, mà là sự cân bằng tinh tế giữa nhiều yếu tố đối lập nhau.
@@ -29,7 +31,9 @@ Phương pháp này mang lại ba lợi ích quan trọng. Thứ nhất là sự
 Thứ hai là hiệu quả về tài nguyên. Thay vì chạy một nghìn lần huấn luyện nhỏ lẻ, hệ thống chạy một lần huấn luyện lớn với toàn bộ dữ liệu tích lũy. Điều này không chỉ tiết kiệm chi phí tính toán mà còn cho phép mô hình học được những mẫu phức tạp hơn từ tập dữ liệu lớn hơn. Có một hiệu ứng tương tự như việc bạn học một ngôn ngữ mới: thay vì học một từ rồi quên, học một từ khác rồi quên, bạn học cả một bài văn đầy đủ để hiểu được ngữ cảnh và cấu trúc.
 
 Thứ ba là tính nhất quán trong triển khai. Sau khi quá trình huấn luyện hoàn thành, tất cả các máy chủ sản xuất được cập nhật đồng thời lên cùng một phiên bản mô hình mới. Không có sự phân mảnh, không có các phiên bản "lẻ loi". Mọi người dùng, bất kể họ kết nối đến máy chủ nào, đều trải nghiệm cùng một mức độ trí tuệ của hệ thống.
-
+#align(center)[
+  #image("images/model-retrain.jpg", width: 400pt)
+]
 == Lựa Chọn Dữ Liệu Huấn Luyện - Nghệ Thuật Lọc Chân Lý
 
 Có một nguyên tắc cơ bản trong machine learning mà mọi kỹ sư đều biết: "Garbage in, garbage out" - rác vào, rác ra. Chất lượng của mô hình mới phụ thuộc tuyệt đối vào chất lượng của dữ liệu được sử dụng để huấn luyện nó. Đây là lý do tại sao bước lựa chọn dữ liệu trong `retrain_pipeline.py` được thực hiện với sự cẩn trọng đến từng chi tiết nhỏ.

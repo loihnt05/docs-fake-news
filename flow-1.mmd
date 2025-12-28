@@ -1,0 +1,54 @@
+flowchart LR
+ subgraph Sources["Nguồn tin thực tế"]
+        S1("Web Tin tức")
+        S2("Mạng xã hội")
+        S3("Blog/Diễn đàn")
+  end
+ subgraph IngestionLayer["Lớp Thu thập Dữ liệu"]
+    direction TB
+        Airflow@{ label: "<img src=\"https://logo.svgcdn.com/logos/airflow.png\" width=\"50\"><br>Điều phối Workflow" }
+        Scraper@{ label: "<img src=\"https://img.icons8.com/fluency/48/bot.png\" width=\"40\"><br>Scraper Workers" }
+  end
+ subgraph CoreProcessing["Lớp Xử lý Lõi AI"]
+    direction TB
+        Consumer["Kafka Consumers"]
+        ClaimMod["Module Trích xuất claims"]
+        VerifyMod["Mô hình Verifier"]
+  end
+ subgraph KnowledgeBase["Knowledge Base"]
+        VectorDB@{ label: "<img src=\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCvd8GKvqU5Ovl7e6hKH33GF-a9fpcMgT4wQ&s\" width=\"40\"><br>Vector DB (pgvector)" }
+  end
+    Airflow -- Lập lịch & Giám sát --> Scraper
+    Consumer --> ClaimMod
+    ClaimMod --> VerifyMod
+    S1 == "1. Thu thập HTML" ==> Scraper
+    S2 == "1. Thu thập HTML" ==> Scraper
+    S3 == "1. Thu thập HTML" ==> Scraper
+    Scraper == "2. Đẩy dữ liệu sạch" ==> KafkaQueue@{ label: "<img src=\"https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg\" width=\"50\"><br>Message Queue" }
+    KafkaQueue == "3. Lấy bài viết" ==> Consumer
+    VerifyMod <== "4. Tìm kiếm bằng chứng" ==> VectorDB
+    VerifyMod == "5. Xuất kết quả" ==> OutputResults["Kết quả đánh giá (REAL / FAKE / UNDEFINED)"]
+
+    Airflow@{ shape: rounded}
+    Scraper@{ shape: rounded}
+    VectorDB@{ shape: rounded}
+    KafkaQueue@{ shape: rounded}
+     S1:::source
+     S2:::source
+     S3:::source
+     Airflow:::ingestion
+     Scraper:::ingestion
+     Consumer:::processing
+     ClaimMod:::processing
+     VerifyMod:::processing
+     VectorDB:::storage
+     KafkaQueue:::kafka
+     OutputResults:::output
+    classDef source fill:#e1f5fe,stroke:#0288d1,stroke-width:2px,color:#01579b,rx:10,ry:10
+    classDef ingestion fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#e65100,rx:10,ry:10
+    classDef kafka fill:#eceff1,stroke:#607d8b,stroke-width:4px,color:#263238,stroke-dasharray: 5 5,rx:10,ry:10
+    classDef processing fill:#e8f5e9,stroke:#388e3c,stroke-width:2px,color:#1b5e20,rx:10,ry:10
+    classDef output fill:#f3e5f5,stroke:#8e24aa,stroke-width:2px,color:#4a148c,rx:10,ry:10
+    classDef storage fill:#efebe9,stroke:#5d4037,stroke-width:2px,stroke-dasharray: 2 2,rx:10,ry:10
+    style IngestionLayer fill:transparent,stroke:#f57c00,stroke-width:2px,stroke-dasharray: 5 5
+    style CoreProcessing fill:transparent,stroke:#388e3c,stroke-width:2px,stroke-dasharray: 5 5

@@ -5,6 +5,9 @@
 == Giới thiệu đề tài
 
 Trong bối cảnh công nghệ thông tin phát triển mạnh mẽ, mạng xã hội đã trở thành kênh truyền thông chính cho hàng triệu người Việt Nam. Tuy nhiên, cùng với những lợi ích to lớn, không gian mạng cũng trở thành môi trường màu mỡ cho sự lan truyền của thông tin sai lệch và tin giả. Đề tài nghiên cứu này tập trung vào việc phát triển một hệ thống thông minh có khả năng tự động phát hiện và xác minh thông tin trên không gian mạng tiếng Việt. Khác với các phương pháp truyền thống dựa vào kiểm duyệt thủ công hay các mô hình máy học tĩnh, hệ thống được đề xuất có khả năng học liên tục và thích ứng với môi trường thông tin luôn thay đổi. Điều này đặc biệt quan trọng trong bối cảnh các chiến dịch thông tin giả ngày càng tinh vi và biến đổi không ngừng.
+#align(center)[
+  #image("images/fake-news-illustate.jpg", width: 400pt)
+]
 
 == Bối cảnh
 Tin giả đang gia tăng với tốc độ báo động trên không gian mạng tiếng Việt. Sự bùng nổ của mạng xã hội đã tạo ra một môi trường mà thông tin có thể lan truyền với quy mô và tốc độ chưa từng có, vượt xa khả năng xử lý của bất kỳ phương pháp kiểm duyệt thủ công nào. Điều đáng lo ngại hơn là các chiến dịch tung tin giả ngày càng trở nên tinh vi và có tổ chức. Chúng liên tục thay đổi chủ đề, điều chỉnh phương thức lan truyền và thay đổi sắc thái biểu đạt để né tránh các công cụ phát hiện. Trong khi đó, quy trình fact-checking truyền thống dựa vào các nhà báo và chuyên gia, mặc dù đáng tin cậy về mặt chất lượng, nhưng lại tốn rất nhiều thời gian và nguồn lực, khiến nó không thể mở rộng quy mô để đáp ứng luồng thông tin khổng lồ xuất hiện mỗi ngày.
@@ -21,10 +24,12 @@ Mục tiêu đầu tiên là xây dựng một pipeline tự động có khả n
 Mục tiêu thứ hai tập trung vào khả năng học liên tục từ dữ liệu mới. Thay vì huấn luyện một lần rồi để mô hình hoạt động mãi mãi như các hệ thống truyền thống, hệ thống này cần có kiến trúc cho phép tự động cập nhật kiến thức và cải thiện các mô hình học máy khi có dữ liệu mới xuất hiện. Điều này đảm bảo hệ thống luôn bắt kịp với thực tại đang thay đổi, giống như cách một người liên tục học hỏi từ kinh nghiệm mới.
 
 Mục tiêu thứ ba là tận dụng sức mạnh của yếu tố con người thông qua cơ chế "human-in-the-loop". Hệ thống cần có khả năng thu thập và học hỏi từ phản hồi của người dùng cuối cũng như các chuyên gia trong lĩnh vực. Bằng cách này, tri thức và kinh nghiệm của con người trở thành một phần không thể tách rời của quá trình cải thiện hệ thống, tạo ra một vòng lặp học tập tích cực.
-
+#image("images/info-overload.jpg", width: 400pt)
 == Tính ứng dụng
 
 Hệ thống được đề xuất mang lại giá trị ứng dụng thiết thực trên nhiều phương diện. Về mặt xã hội, nó góp phần bảo vệ cộng đồng mạng khỏi những tác hại của tin giả, đặc biệt trong các lĩnh vực nhạy cảm như sức khỏe, chính trị và kinh tế. Người dùng thông thường có thể sử dụng extension trình duyệt để kiểm tra nhanh độ tin cậy của thông tin họ đọc trên mạng xã hội, giúp họ đưa ra quyết định sáng suốt hơn. Các tổ chức truyền thông và báo chí có thể tích hợp hệ thống vào quy trình biên tập để kiểm tra thông tin nhanh chóng trước khi công bố. Các nền tảng mạng xã hội cũng có thể sử dụng hệ thống để tự động gắn cảnh báo hoặc hạn chế lan truyền các nội dung có khả năng chứa thông tin sai lệch. Từ góc độ nghiên cứu, kiến trúc học liên tục được đề xuất có thể được áp dụng cho nhiều bài toán khác ngoài phát hiện tin giả, mở ra hướng nghiên cứu mới cho các hệ thống AI cần thích ứng với môi trường thay đổi liên tục.
+
+#image("images/chart-misinfo.jpeg", width: 400pt)
 
 == Thách thức
 

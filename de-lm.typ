@@ -1,16 +1,16 @@
 #set par(justify: true)
  
-= Cơ chế Học và Ra quyết định - Phiên bản Mở rộng
+= Cơ chế học và ra quyết định - Phiên bản Mở rộng
 
-Sau khi hệ thống đã có khả năng tìm kiếm thông tin, trích xuất đặc trưng và xác minh từng bằng chứng, chúng ta đến với thành phần quan trọng nhất, thứ biến hệ thống từ một công cụ phân tích tĩnh thành một hệ thống thông minh có khả năng tự tiến hóa. Chương này sẽ đi sâu vào cách hệ thống tổng hợp thông tin, đưa ra quyết định cuối cùng và quan trọng hơn cả, cách nó học hỏi từ chính những trường hợp không chắc chắn để trở nên thông minh hơn theo thời gian.
+Sau khi hệ thống đã có khả năng tìm kiếm thhông tin, trích xuất đặc trưng và xác minh từng bằng chứng, chúng ta đến với thành phần quan trọng nhất, thứ biến hệ thống từ một công cụ phân tích tĩnh thành một hệ thống thông minh có khả năng tự tiến hóa. Chương này sẽ đi sâu vào cách hệ thống tổng hợp thông tin, đưa ra quyết định cuối cùng và quan trọng hơn cả, cách nó học hỏi từ chính những trường hợp không chắc chắn để trở nên thông minh hơn theo thời gian.
 
-== Tại sao không sử dụng luật cứng (Hard Rules)?
+== Tại sao không sử dụng Hard Rules?
 
-Trước khi đi vào chi tiết về cơ chế ra quyết định của hệ thống, chúng ta cần hiểu tại sao một cách tiếp cận đơn giản hơn, đó là sử dụng các luật cứng, lại không phù hợp với bài toán phát hiện tin giả.
+Trước khi đi vào chi tiết về cơ chế ra quyết định của hệ thống, chúng ta cần hiểu tại sao một cách tiếp cận đơn giản hơn, đó là sử dụng các Hard Rules, lại không phù hợp với bài toán phát hiện tin giả.
 
-=== Cách tiếp cận bằng luật cứng là gì?
+=== Cách tiếp cận bằng Hard Rules là gì?
 
-Một hệ thống dựa trên luật cứng hoạt động theo logic if-then đơn giản. Ví dụ, chúng ta có thể định nghĩa các luật như sau: "Nếu bài viết chứa từ khóa 'chữa khỏi ung thư' và đến từ một trang web không nằm trong danh sách các nguồn y khoa uy tín thì đánh dấu là tin giả" hoặc "Nếu tiêu đề sử dụng chữ in hoa toàn bộ và chứa từ 'NÓNG HỔI' thì có xác suất cao là tin giả".
+Một hệ thống dựa trên Hard Rules hoạt động theo logic if-then đơn giản. Ví dụ, chúng ta có thể định nghĩa các luật như sau: "Nếu bài viết chứa từ khóa 'chữa khỏi ung thư' và đến từ một trang web không nằm trong danh sách các nguồn y khoa uy tín thì đánh dấu là tin giả" hoặc "Nếu tiêu đề sử dụng chữ in hoa toàn bộ và chứa từ 'NÓNG HỔI' thì có xác suất cao là tin giả".
 
 Cách tiếp cận này trông có vẻ hợp lý vì nó dễ hiểu, dễ triển khai và minh bạch. Một người không chuyên về công nghệ vẫn có thể đọc và hiểu được tại sao hệ thống lại đưa ra một quyết định nhất định. Tuy nhiên, trong thực tế, phương pháp này có những hạn chế nghiêm trọng khiến nó không thể hoạt động hiệu quả trong môi trường thông tin phức tạp và luôn thay đổi như hiện nay.
 
@@ -18,7 +18,7 @@ Cách tiếp cận này trông có vẻ hợp lý vì nó dễ hiểu, dễ tri�
 
 Hãy tưởng tượng bạn là một giáo viên đang dạy học sinh nhận biết hoa quả. Thay vì dạy cho học sinh các đặc điểm chung của quả táo (tròn, có cuống, thường có màu đỏ hoặc xanh, vỏ mịn), bạn lại cho học sinh ghi nhớ từng quả táo cụ thể mà các em đã thấy: "Quả táo số một có màu đỏ, nặng 150 gram, có một vết lõm nhỏ ở phía dưới". Học sinh của bạn sẽ nhận diện chính xác những quả táo mà các em đã gặp, nhưng sẽ bối rối khi gặp một quả táo có màu vàng hoặc nặng 200 gram.
 
-Đây chính xác là vấn đề của luật cứng trong phát hiện tin giả. Các luật này về bản chất là việc "ghi nhớ" các mẫu cụ thể của tin giả đã xuất hiện trong quá khứ. Chúng bị quá khớp (overfitting) vào những đặc điểm rất cụ thể và thiếu khả năng tổng quát hóa sang các trường hợp mới.
+Đây chính xác là vấn đề của Hard Rules trong phát hiện tin giả. Các luật này về bản chất là việc "ghi nhớ" các mẫu cụ thể của tin giả đã xuất hiện trong quá khứ. Chúng bị quá khớp (overfitting) vào những đặc điểm rất cụ thể và thiếu khả năng tổng quát hóa sang các trường hợp mới.
 
 Giả sử bạn phát hiện ra rằng nhiều tin giả về chính trị thường sử dụng cụm từ "nguồn tin đáng tin cậy cho biết" mà không cung cấp nguồn cụ thể. Bạn tạo ra luật: "Nếu bài viết chứa cụm từ này mà không có trích dẫn cụ thể thì đánh dấu là tin giả". Người tạo tin giả chỉ cần thay đổi một chút thành "theo một nguồn uy tín" hoặc "chúng tôi được biết từ nguồn tin" là đã vượt qua được luật này. Họ có thể thay đổi vô số biến thể với rất ít công sức, trong khi bạn phải liên tục cập nhật hàng trăm, hàng nghìn luật mới để bắt kịp.
 
@@ -26,11 +26,11 @@ Vấn đề trở nên tồi tệ hơn khi các luật này tích lũy theo th�
 
 === False Certainty - Sự tự tin sai lầm nguy hiểm
 
-Có một vấn đề tinh vi nhưng có lẽ còn nghiêm trọng hơn cả overfitting, đó là các luật cứng tạo ra một ảo giác về sự chắc chắn. Chúng hoạt động theo logic nhị phân tuyệt đối: hoặc là đúng, hoặc là sai, không có vùng xám ở giữa.
+Có một vấn đề tinh vi nhưng có lẽ còn nghiêm trọng hơn cả overfitting, đó là các Hard Rules tạo ra một ảo giác về sự chắc chắn. Chúng hoạt động theo logic nhị phân tuyệt đối: hoặc là đúng, hoặc là sai, không có vùng xám ở giữa.
 
-Hãy xem xét tình huống sau: một nhà báo viết một bài phân tích chuyên sâu về các chiến thuật của tin giả, trong đó trích dẫn nhiều ví dụ về các tin giả để phân tích. Bài viết này có thể vô tình kích hoạt nhiều luật cứng của bạn vì nó chứa các từ khóa, cụm từ điển hình của tin giả. Hệ thống sẽ đánh dấu bài viết này là tin giả với độ tự tin một trăm phần trăm, mặc dù đó hoàn toàn là một bài phân tích nghiêm túc về tin giả.
+Hãy xem xét tình huống sau: một nhà báo viết một bài phân tích chuyên sâu về các chiến thuật của tin giả, trong đó trích dẫn nhiều ví dụ về các tin giả để phân tích. Bài viết này có thể vô tình kích hoạt nhiều Hard Rules của bạn vì nó chứa các từ khóa, cụm từ điển hình của tin giả. Hệ thống sẽ đánh dấu bài viết này là tin giả với độ tự tin một trăm phần trăm, mặc dù đó hoàn toàn là một bài phân tích nghiêm túc về tin giả.
 
-Tương tự, một bài báo châm biếm (satire) cố tình sử dụng các yếu tố của tin giả để chế nhạo hoặc phê phán cũng sẽ bị đánh giá sai. Một người đọc thông thường có thể nhận ra đó là châm biếm dựa vào ngữ cảnh, giọng văn và nguồn xuất bản, nhưng hệ thống luật cứng không có khả năng này.
+Tương tự, một bài báo châm biếm (satire) cố tình sử dụng các yếu tố của tin giả để chế nhạo hoặc phê phán cũng sẽ bị đánh giá sai. Một người đọc thông thường có thể nhận ra đó là châm biếm dựa vào ngữ cảnh, giọng văn và nguồn xuất bản, nhưng hệ thống Hard Rules không có khả năng này.
 
 Điều nguy hiểm nhất là hệ thống sẽ báo cáo kết quả này với sự tự tin tuyệt đối. Nó không thể nói rằng "Tôi không chắc lắm về trường hợp này". Người dùng nhìn thấy một kết quả dứt khoát và có thể nghĩ rằng hệ thống rất chắc chắn, trong khi thực tế hệ thống chỉ đang áp dụng một luật máy móc mà không hiểu ngữ cảnh.
 
@@ -40,14 +40,24 @@ Ngược lại, một hệ thống dựa trên xác suất và học máy có th
 
 Môi trường thông tin là một hệ thống đối kháng (adversarial system). Khi bạn phát triển một phương pháp phát hiện tin giả, những người tạo tin giả sẽ học cách đối phó với nó. Đây là một cuộc chạy đua vũ trang không ngừng nghỉ.
 
-Các luật cứng về cơ bản là tĩnh. Chúng phản ánh hiểu biết của bạn về tin giả tại một thời điểm cụ thể. Để cập nhật chúng, bạn cần can thiệp thủ công: quan sát các mẫu mới, viết luật mới, kiểm tra xem chúng không làm hỏng các luật cũ. Quá trình này chậm, tốn kém và đòi hỏi chuyên môn.
+Các Hard Rules về cơ bản là tĩnh. Chúng phản ánh hiểu biết của bạn về tin giả tại một thời điểm cụ thể. Để cập nhật chúng, bạn cần can thiệp thủ công: quan sát các mẫu mới, viết luật mới, kiểm tra xem chúng không làm hỏng các luật cũ. Quá trình này chậm, tốn kém và đòi hỏi chuyên môn.
 
 Trong khi đó, một hệ thống học máy có khả năng tự điều chỉnh khi được cung cấp dữ liệu mới. Nó có thể phát hiện ra các mẫu mới mà ngay cả chuyên gia cũng chưa nhận ra. Nó có thể điều chỉnh trọng số của các đặc trưng khác nhau khi môi trường thay đổi, tất cả một cách tự động.
 
 == Bộ máy quyết định (Decision Engine) - Tổng hợp thông minh các tín hiệu
 
-Bây giờ chúng ta hiểu tại sao luật cứng không phù hợp, hãy xem xét cách hệ thống thực sự đưa ra quyết định. Bộ máy quyết định này là nơi tất cả các thông tin từ các giai đoạn trước được tổng hợp lại để tạo ra một đánh giá cuối cùng.
+Bây giờ chúng ta hiểu tại sao Hard Rules không phù hợp, hãy xem xét cách hệ thống thực sự đưa ra quyết định. Bộ máy quyết định này là nơi tất cả các thông tin từ các giai đoạn trước được tổng hợp lại để tạo ra một đánh giá cuối cùng.
 
+```sqlite
+                                                                                  Claim
+                                                                                      ↓
+                                                                            Similarity Search
+                                                                                      ↓
+                                                                              Verifier Score
+                                                                                      ↓
+                                                              REFUTED / SUPPORTED / UNDEFINED
+
+```
 === Bài toán tổng hợp đa bằng chứng
 
 Hãy nhớ lại rằng khi một claim được đưa vào hệ thống, nó không chỉ được so sánh với một bằng chứng duy nhất. Trong chương 4, chúng ta đã mô tả việc tìm kiếm top-k bằng chứng (thường k bằng 3 hoặc 5) có liên quan nhất đến claim đó. Mỗi bằng chứng sau đó được đưa vào mô hình Natural Language Inference để xác định mối quan hệ với claim.
@@ -375,7 +385,7 @@ User feedback metrics: Tỷ lệ thumbs up/down từ người dùng, số lượ
 
 Chương này đã mô tả chi tiết cách hệ thống đưa ra quyết định thông minh và quan trọng hơn, cách nó học hỏi và tiến hóa theo thời gian. Những điểm chính cần nhớ:
 
-Từ chối luật cứng: Hệ thống không sử dụng các luật if-then cứng nhắc vì chúng bị overfitting, tạo ra false certainty, và không thích nghi được. Thay vào đó, nó sử dụng các mô hình xác suất linh hoạt.
+Từ chối Hard Rules: Hệ thống không sử dụng các luật if-then cứng nhắc vì chúng bị overfitting, tạo ra false certainty, và không thích nghi được. Thay vào đó, nó sử dụng các mô hình xác suất linh hoạt.
 
 Bộ máy quyết định thông minh: Tổng hợp nhiều bằng chứng với chiến lược ưu tiên bác bỏ và yêu cầu đồng thuận cho ủng hộ. Quan trọng nhất, nó cung cấp đầu ra nhận biết độ tự tin, không chỉ nhãn nhị phân.
 

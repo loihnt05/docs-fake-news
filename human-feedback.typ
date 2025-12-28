@@ -7,7 +7,9 @@ Trong chương trước, chúng ta đã thấy cách hệ thống học từ cá
 Nhưng việc mở cửa cho phản hồi từ người dùng cũng tạo ra một lỗ hổng lớn. Làm thế nào để phân biệt giữa phản hồi chân thành từ người dùng muốn giúp đỡ và các báo cáo độc hại từ những kẻ muốn phá hoại hệ thống? Làm sao để đảm bảo rằng việc học từ cộng đồng không làm suy yếu mà thực sự củng cố hệ thống?
 
 Chương này giải quyết những câu hỏi này bằng cách trình bày một kiến trúc phức tạp và tinh vi, nơi mà phản hồi từ người dùng được chào đón nhưng cũng được kiểm soát chặt chẽ. Đây là một hệ thống phản hồi có trọng số, nơi không phải mọi ý kiến đều có giá trị như nhau, và nơi uy tín được xây dựng dần dần thông qua những đóng góp có chất lượng.
-
+#align(center)[
+  #image("images/human-in-loop.jpg", width: 400pt)
+]
 == Cơ chế Báo cáo từ Người dùng - Cầu nối giữa Thực tế và Hệ thống
 
 Hãy bắt đầu bằng cách tưởng tượng trải nghiệm của một người dùng thông thường, chúng ta sẽ gọi cô ấy là Mai. Mai đang lướt Facebook và thấy một bài đăng về một phương pháp chữa bệnh kỳ diệu. Cô ấy cảm thấy nghi ngờ, vì vậy cô ấy sao chép đoạn text và dán vào tiện ích mở rộng của hệ thống chúng ta. Trong vài giây, hệ thống trả về kết quả: "REAL, 0.73". Hệ thống nói rằng thông tin này có khả năng đúng với độ tự tin bảy mươi ba phần trăm.
@@ -29,7 +31,9 @@ Trường thứ hai, và đây là trường quan trọng nhất, là "Nguồn t
 Tuy nhiên, việc có trường này, ngay cả khi tùy chọn, tạo ra một hiệu ứng tâm lý quan trọng. Nó khuyến khích người dùng suy nghĩ kỹ hơn trước khi gửi báo cáo. Nếu bạn không thể nghĩ ra bất kỳ nguồn nào hỗ trợ quan điểm của mình, có thể bạn nên xem xét lại xem mình có thực sự chắc chắn không. Điều này giúp lọc bớt các báo cáo chất lượng thấp hoặc bốc đồng ngay từ phía người dùng.
 
 Cuối cùng, có một trường text tự do nhỏ cho "Ghi chú bổ sung". Đây là nơi người dùng có thể giải thích lý do của họ bằng lời. Mai, với tư cách là bác sĩ, có thể viết một câu ngắn gọn: "Là bác sĩ tim mạch, tôi xác nhận rằng phương pháp này không có căn cứ khoa học và đã bị FDA cảnh báo". Thông tin định tính như thế này, mặc dù không được sử dụng trực tiếp trong việc huấn luyện mô hình, lại vô cùng quý giá cho các quản trị viên khi họ xem xét báo cáo.
-
+#align(center)[
+  #image("images/feedback.png", width: 400pt)
+]
 === Payload - Gói thông tin được gửi về máy chủ
 
 Khi Mai nhấn nút "Gửi báo cáo", JavaScript trong popup.js bắt đầu đóng gói thông tin. Điều quan trọng là phải hiểu chính xác những gì được gửi về máy chủ và tại sao.

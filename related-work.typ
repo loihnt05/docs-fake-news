@@ -43,6 +43,9 @@ quả này thể hiện hiệu suất của các mô hình, bao gồm cả mô h
 CNNs, LSTM, và các mô hình kết hợp khác nhau.
 với một số mô hình đạt độ chính xác khá cao. Tuy nhiên, vẫn còn nhiều thách thức
 và cơ hội nghiên cứu mà các nhóm nghiên cứu đang tập trung giải quyết.
+
+#image("images/related-world.png", width: 400pt)
+
 == Tình hình nghiên cứu ở Việt Nam
 Hiện nay, việc xác định sự chính xác của thông tin trên mạng và trên các trang tin tức
 ở Việt Nam ngày càng trở nên phổ biến và quan trọng hơn. Các tổ chức và trường đại
@@ -69,3 +72,4 @@ cách độc lập và kết hợp thông tin siêu dữ liệu bổ sung với 
 đầu vào cho mô hình. Kết quả của phương pháp này cho kết quả nhỉnh hơn so với các
 phương pháp BERT tinh chỉnh khác và đạt được kết quả tốt nhất trên tập dữ liệu
 ReINTEL được công bố bởi VLSP năm 2020 với thang đo AUC đạt 0.9575.
+#image("images/related-vnvn.png", width: 400pt)
