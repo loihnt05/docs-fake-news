@@ -6,7 +6,13 @@ Sau khi đã hiểu rõ bản chất của bài toán và các thách thức c�
 == Tổng quan Pipeline - Bức tranh toàn cảnh
 
 Trước khi đi vào chi tiết từng thành phần, chúng ta cần có một cái nhìn toàn cảnh về cách dữ liệu di chuyển qua hệ thống. Hãy tưởng tượng pipeline của chúng ta như một dây chuyền sản xuất trong một nhà máy hiện đại. Nguyên liệu thô (thông tin từ các nguồn tin) đi vào từ một đầu, trải qua nhiều công đoạn chế biến khác nhau, và cuối cùng cho ra thành phẩm (kết quả xác minh) ở đầu kia.
+#align(center)[
+  #image("images/flow-1.jpg", width: 500pt)
+]
 
+#align(center)[
+  #image("images/flow-2.jpg", width: 100pt)
+]
 === Triết lý thiết kế: Tách biệt trách nhiệm
 
 Pipeline được thiết kế theo nguyên tắc "separation of concerns" - mỗi bước trong chuỗi xử lý chịu trách nhiệm cho một tác vụ chuyên biệt và độc lập. Đây không chỉ là một lựa chọn kỹ thuật thuần túy mà còn mang lại nhiều lợi ích thực tiễn quan trọng.
