@@ -112,19 +112,19 @@ Trong khi các con số và biểu đồ mang lại độ chính xác và khả 
 
 Hãy tưởng tượng một câu chuyện giả định nhưng hoàn toàn có thể xảy ra trong thực tế:
 
-**Ngày 1 - Xuất hiện mối đe dọa mới:** Một chiến dịch thông tin sai lệch về một chủ đề mới, giả sử là về một loại vaccine mới, bắt đầu lan truyền trên mạng xã hội Việt Nam. Các tuyên bố giả mạo sử dụng một khung ngôn ngữ và lập luận mà mô hình hiện tại, giả sử là v8, chưa từng gặp trong quá trình huấn luyện. Kết quả là, khi người dùng kiểm tra các tuyên bố này thông qua extension hoặc website, mô hình hoặc phân loại sai chúng là REAL, hoặc không đủ tự tin và gán nhãn UNDEFINED.
+*Ngày 1 - Xuất hiện mối đe dọa mới:* Một chiến dịch thông tin sai lệch về một chủ đề mới, giả sử là về một loại vaccine mới, bắt đầu lan truyền trên mạng xã hội Việt Nam. Các tuyên bố giả mạo sử dụng một khung ngôn ngữ và lập luận mà mô hình hiện tại, giả sử là v8, chưa từng gặp trong quá trình huấn luyện. Kết quả là, khi người dùng kiểm tra các tuyên bố này thông qua extension hoặc website, mô hình hoặc phân loại sai chúng là REAL, hoặc không đủ tự tin và gán nhãn UNDEFINED.
 
-**Ngày 2-5 - Phản ứng của cộng đồng:** Người dùng tinh ý, đặc biệt là những người có kiến thức về y học hoặc đã kiểm chứng thông tin từ các nguồn uy tín, nhận ra rằng hệ thống đang sai. Họ bắt đầu sử dụng tính năng báo cáo lỗi trong extension và dashboard. Trong vài ngày, có thể một trăm hoặc hai trăm báo cáo tích lũy, tất cả đều chỉ ra rằng các tuyên bố cụ thể về vaccine này là tin giả nhưng hệ thống lại không nhận diện được.
+*Ngày 2-5 - Phản ứng của cộng đồng:* Người dùng tinh ý, đặc biệt là những người có kiến thức về y học hoặc đã kiểm chứng thông tin từ các nguồn uy tín, nhận ra rằng hệ thống đang sai. Họ bắt đầu sử dụng tính năng báo cáo lỗi trong extension và dashboard. Trong vài ngày, có thể một trăm hoặc hai trăm báo cáo tích lũy, tất cả đều chỉ ra rằng các tuyên bố cụ thể về vaccine này là tin giả nhưng hệ thống lại không nhận diện được.
 
 Trong khi đó, hệ thống Phản hồi & Độ uy tín đang hoạt động không ngừng nghỉ. Các báo cáo này được ghi nhận, lưu vào cơ sở dữ liệu, và đưa vào hàng đợi kiểm duyệt. Các chuyên gia - có thể là những người có điểm uy tín cao trong lĩnh vực y tế hoặc kiểm chứng sự thật - bắt đầu xem xét các báo cáo này. Họ xác minh từ các nguồn uy tín rằng các tuyên bố về vaccine thực sự là sai lệch, và họ đánh dấu các báo cáo là "Approved", kèm theo nhãn chính xác FAKE.
 
-**Ngày 6 - Chu kỳ học bắt đầu:** Cuối tuần đến, thời điểm mà DAG `dags/weekly_retrain_dag.py` được lên lịch chạy. Airflow kích hoạt pipeline, và quá trình huấn luyện lại bắt đầu. Pipeline thu thập tất cả các báo cáo đã được chấp thuận trong tuần, bao gồm hàng trăm báo cáo về chiến dịch tin giả vaccine. Thông qua kỹ thuật oversampling có trọng số, các báo cáo từ chuyên gia y tế với điểm uy tín cao được chọn nhiều lần trong các batch huấn luyện.
+*Ngày 6 - Chu kỳ học bắt đầu:* Cuối tuần đến, thời điểm mà DAG `dags/weekly_retrain_dag.py` được lên lịch chạy. Airflow kích hoạt pipeline, và quá trình huấn luyện lại bắt đầu. Pipeline thu thập tất cả các báo cáo đã được chấp thuận trong tuần, bao gồm hàng trăm báo cáo về chiến dịch tin giả vaccine. Thông qua kỹ thuật oversampling có trọng số, các báo cáo từ chuyên gia y tế với điểm uy tín cao được chọn nhiều lần trong các batch huấn luyện.
 
 Mô hình PhoBERT bắt đầu thấy các mẫu mới: các cụm từ đặc trưng, cấu trúc lập luận, và ngữ cảnh liên quan đến chiến dịch tin giả này. Nó điều chỉnh các trọng số trong mạng neural của mình để nhận diện những pattern này. Sau nhiều giờ tính toán trên GPU, một phiên bản mô hình mới, v9, được tạo ra và lưu vào `checkpoints/model_9`.
 
-**Ngày 7 - Triển khai phiên bản mới:** Sáng sớm, trước khi lưu lượng người dùng đỉnh điểm bắt đầu, đội ngũ vận hành cập nhật file cấu hình để trỏ hệ thống đến model_9 và khởi động lại các máy chủ ứng dụng. Trong vòng vài phút, tất cả các instance của backend đang chạy model_9.
+*Ngày 7 - Triển khai phiên bản mới:* Sáng sớm, trước khi lưu lượng người dùng đỉnh điểm bắt đầu, đội ngũ vận hành cập nhật file cấu hình để trỏ hệ thống đến model_9 và khởi động lại các máy chủ ứng dụng. Trong vòng vài phút, tất cả các instance của backend đang chạy model_9.
 
-**Ngày 8 và sau đó - Khả năng mới được kích hoạt:** Khi các tuyên bố tin giả tương tự về vaccine tiếp tục lan truyền (vì chiến dịch thông tin sai lệch thường kéo dài nhiều ngày hoặc tuần), người dùng kiểm tra chúng qua hệ thống. Lần này, mô hình v9 ngay lập tức nhận diện được các pattern mà nó đã học. Với độ tự tin cao, nó gán nhãn FAKE cho các tuyên bố này. Người dùng nhận được cảnh báo rõ ràng rằng thông tin họ đang đọc là không đáng tin cậy.
+*Ngày 8 và sau đó - Khả năng mới được kích hoạt:* Khi các tuyên bố tin giả tương tự về vaccine tiếp tục lan truyền (vì chiến dịch thông tin sai lệch thường kéo dài nhiều ngày hoặc tuần), người dùng kiểm tra chúng qua hệ thống. Lần này, mô hình v9 ngay lập tức nhận diện được các pattern mà nó đã học. Với độ tự tin cao, nó gán nhãn FAKE cho các tuyên bố này. Người dùng nhận được cảnh báo rõ ràng rằng thông tin họ đang đọc là không đáng tin cậy.
 
 Từ góc độ người dùng cá nhân, trải nghiệm chuyển từ "hệ thống không giúp được gì" (ngày 1-6) sang "hệ thống bảo vệ tôi khỏi thông tin sai lệch" (ngày 8 trở đi). Từ góc độ xã hội rộng lớn hơn, hệ thống đã chuyển từ một phần của vấn đề (vô tình để tin giả lan truyền) sang một phần của giải pháp (ngăn chặn sự lan truyền).
 
@@ -132,10 +132,10 @@ Từ góc độ người dùng cá nhân, trải nghiệm chuyển từ "hệ th
 
 Nghiên cứu tình huống này, mặc dù là một kịch bản giả định, minh họa một số điểm quan trọng mà các chỉ số định lượng không thể nắm bắt đầy đủ:
 
-Thứ nhất, nó cho thấy **chu kỳ phản hồi hoàn chỉnh** của hệ thống. Từ lúc thất bại ban đầu, qua giai đoạn thu thập phản hồi, kiểm duyệt, học, và cuối cùng là cải thiện - mỗi giai đoạn được kết nối chặt chẽ với giai đoạn tiếp theo.
+Thứ nhất, nó cho thấy *chu kỳ phản hồi hoàn chỉnh* của hệ thống. Từ lúc thất bại ban đầu, qua giai đoạn thu thập phản hồi, kiểm duyệt, học, và cuối cùng là cải thiện - mỗi giai đoạn được kết nối chặt chẽ với giai đoạn tiếp theo.
 
-Thứ hai, nó minh họa **vai trò của cộng đồng** trong quá trình học. Hệ thống không tự mình khám phá ra rằng nó đang sai. Nó cần sự can thiệp của con người - những người dùng quan tâm đủ để báo cáo lỗi và những chuyên gia có kiến thức đủ để xác minh sự thật.
+Thứ hai, nó minh họa *vai trò của cộng đồng* trong quá trình học. Hệ thống không tự mình khám phá ra rằng nó đang sai. Nó cần sự can thiệp của con người - những người dùng quan tâm đủ để báo cáo lỗi và những chuyên gia có kiến thức đủ để xác minh sự thật.
 
-Thứ ba, nó làm rõ **tốc độ phản ứng** của hệ thống. Từ khi vấn đề xuất hiện đến khi được giải quyết là khoảng một tuần - không phải tức thì, nhưng cũng không chậm đến mức vô ích. Đây là một sự cân bằng thiết thực giữa tốc độ và sự ổn định.
+Thứ ba, nó làm rõ *tốc độ phản ứng* của hệ thống. Từ khi vấn đề xuất hiện đến khi được giải quyết là khoảng một tuần - không phải tức thì, nhưng cũng không chậm đến mức vô ích. Đây là một sự cân bằng thiết thực giữa tốc độ và sự ổn định.
 
-Thứ tư, và có lẽ quan trọng nhất, nó kể một **câu chuyện về sự tiến hóa**. Hệ thống không được thiết kế để hoàn hảo ngay từ đầu. Thay vào đó, nó được thiết kế để học hỏi từ thất bại và trở nên tốt hơn theo thời gian. Đây là một triết lý khác biệt sâu sắc so với các hệ thống truyền thống mong đợi được hoàn thiện trước khi triển khai.
+Thứ tư, và có lẽ quan trọng nhất, nó kể một *câu chuyện về sự tiến hóa*. Hệ thống không được thiết kế để hoàn hảo ngay từ đầu. Thay vào đó, nó được thiết kế để học hỏi từ thất bại và trở nên tốt hơn theo thời gian. Đây là một triết lý khác biệt sâu sắc so với các hệ thống truyền thống mong đợi được hoàn thiện trước khi triển khai.

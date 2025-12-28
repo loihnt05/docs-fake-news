@@ -119,8 +119,8 @@
 // #include "case-study.typ"
 // #pagebreak()
 
-// #include "limitations-risks.typ"
-// #pagebreak()
+#include "limitations-risks.typ"
+#pagebreak()
 
 // #include "future-work.typ"
 // #pagebreak()
