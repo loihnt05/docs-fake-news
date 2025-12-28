@@ -122,7 +122,7 @@
 #include "limitations-risks.typ"
 #pagebreak()
 
-// #include "future-work.typ"
-// #pagebreak()
+#include "future-work.typ"
+#pagebreak()
 
 // #include "conclusion.typ"
