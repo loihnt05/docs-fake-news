@@ -35,7 +35,7 @@
       #align(horizon + center)[
         #text(size: 23pt)[*Phát triển ứng dụng trên nền tảng dữ liệu lớn*] \
         #v(3pt)
-        #text(size: 28pt)[*Fake News Detection*] \
+        #text(size: 28pt)[*Fake News Detection for Vietnamese Online Media*] \
         #v(20pt)
 
         #text[Giảng viên hướng dẫn] \
@@ -125,15 +125,7 @@
 #include "conclusion.typ"
 #pagebreak()
 
-#let glossary = (
-  RAG: "Retrieval-Augmented Generation",
-  LLM: "Large Language Model",
-  NLP: "Natural Language Processing",
-)
-
-#let term = (key) => glossary[key]
-
-
+#include "terminology.typ"
 #pagebreak()
 
 #include "ref.typ"
