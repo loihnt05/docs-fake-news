@@ -89,8 +89,8 @@
   [Chương #counter(heading).at(here()).at(0). ] + it.body
 }
 
-#include "abstract.typ"
-#pagebreak()
+// #include "abstract.typ"
+// #pagebreak()
 
 #include "introduction.typ"
 #pagebreak()
@@ -98,20 +98,20 @@
 #include "related-work.typ"
 #pagebreak()
 
-#include "problem-statement.typ"
-#pagebreak()
+// #include "problem-statement.typ"
+// #pagebreak()
 
 #include "system-architecture.typ"
 #pagebreak()
 
-#include "de-lm.typ"
-#pagebreak()
+// #include "de-lm.typ"
+// #pagebreak()
 
-#include "human-feedback.typ"
-#pagebreak()
+// #include "human-feedback.typ"
+// #pagebreak()
 
-#include "continuous-learning.typ"
-#pagebreak()
+// #include "continuous-learning.typ"
+// #pagebreak()
 
 #include "evaluation.typ"
 #pagebreak()
@@ -119,8 +119,8 @@
 #include "limitations-risks.typ"
 #pagebreak()
 
-#include "future-work.typ"
-#pagebreak()
+// #include "future-work.typ"
+// #pagebreak()
 
 #include "conclusion.typ"
 #pagebreak()
