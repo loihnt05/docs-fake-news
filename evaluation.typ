@@ -1,6 +1,6 @@
 #set par(justify: true)
 
-= Thiết Lập Thử Nghiệm và Đánh Giá
+= Thiết lập thử nghiệm và kết quả
 
 "In God we trust, all others must bring data" - một hệ thống machine learning chỉ thực sự có giá trị khi được đo lường và đánh giá chặt chẽ. Chương này trình bày cách hệ thống được thử nghiệm và cải thiện liên tục thông qua dữ liệu thực tế.
 
